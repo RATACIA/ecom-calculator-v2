@@ -5,40 +5,40 @@
   </h1>
   <div class="d-flex flex-column justify-center align-center">
     <v-row>
-    <v-col cols="2">
-      <h2>From:</h2>
-    </v-col>
-    <v-col cols="5">
-      <v-autocomplete
-    v-model="fromCurrency"
-    :items="symbols"
-    clearable
-  ></v-autocomplete>
-    </v-col>
-  <v-col cols="5"> 
-    <v-text-field type="number" v-model="amount" ></v-text-field>
-    </v-col>
-  </v-row>
-  <v-row >
-    <v-col cols="2">    
-      <h2>To:</h2>
-    </v-col>
-    <v-col cols="5">
-      <v-autocomplete
-    v-model="toCurrency"
-    :items="symbols"
-    :title="currencies"
-    clearable
-  ></v-autocomplete>
-    </v-col>
-  <v-col cols="5">
-    <v-text-field
-    type="number"
-    readonly
-    v-model="resultConversion"
-  ></v-text-field>
-  </v-col>
-  </v-row>
+      <v-col cols="2">
+        <h2>From:</h2>
+      </v-col>
+      <v-col cols="5">
+        <v-autocomplete
+          v-model="fromCurrency"
+          :items="symbols"
+          clearable
+        ></v-autocomplete>
+      </v-col>
+      <v-col cols="5">
+        <v-text-field type="number" v-model="amount"></v-text-field>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="2">
+        <h2>To:</h2>
+      </v-col>
+      <v-col cols="5">
+        <v-autocomplete
+          v-model="toCurrency"
+          :items="symbols"
+          :title="currencies"
+          clearable
+        ></v-autocomplete>
+      </v-col>
+      <v-col cols="5">
+        <v-text-field
+          type="number"
+          readonly
+          v-model="resultConversion"
+        ></v-text-field>
+      </v-col>
+    </v-row>
   </div>
 </template>
 <script setup>
@@ -57,7 +57,7 @@ const fetchCurrencies = async () => {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "096339dfcdmshf459ee8181b2b9fp18d767jsn61250751abc6",
+      "X-RapidAPI-Key": import.meta.env.VITE_CURRENCY_API_KEY,
       "X-RapidAPI-Host":
         "currency-conversion-and-exchange-rates.p.rapidapi.com",
     },
@@ -81,7 +81,7 @@ const convertApi = async () => {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "096339dfcdmshf459ee8181b2b9fp18d767jsn61250751abc6",
+      "X-RapidAPI-Key": import.meta.env.VITE_CURRENCY_API_KEY,
       "X-RapidAPI-Host":
         "currency-conversion-and-exchange-rates.p.rapidapi.com",
     },
@@ -98,7 +98,6 @@ const convertApi = async () => {
     console.error(error);
   }
 };
-
 
 onMounted(() => {
   fetchCurrencies();

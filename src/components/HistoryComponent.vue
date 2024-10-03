@@ -102,15 +102,15 @@
 
     <v-dialog v-model="modalVisible" max-width="500px">
       <v-card>
-  <v-card-title class="headline text-center">Sterge produs</v-card-title>
-  <v-card-text class="text-center">
-    Esti sigur(a) ca doresti sa stergi acest produs?
-  </v-card-text>
-  <v-card-actions class="d-flex justify-center">
-    <v-btn @click="deleteItem(currentItemId)">Sterge</v-btn>
-    <v-btn @click="toggleModal">Close</v-btn>
-  </v-card-actions>
-</v-card>
+        <v-card-title class="headline text-center">Sterge produs</v-card-title>
+        <v-card-text class="text-center">
+          Esti sigur(a) ca doresti sa stergi acest produs?
+        </v-card-text>
+        <v-card-actions class="d-flex justify-center">
+          <v-btn @click="deleteItem(currentItemId)">Sterge</v-btn>
+          <v-btn @click="toggleModal">Close</v-btn>
+        </v-card-actions>
+      </v-card>
     </v-dialog>
   </div>
 </template>
@@ -177,7 +177,7 @@ const htmlToPdf = async () => {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      "X-RapidAPI-Key": "096339dfcdmshf459ee8181b2b9fp18d767jsn61250751abc6",
+      "X-RapidAPI-Key": import.meta.env.VITE_PDF_KEY,
       "X-RapidAPI-Host": "yakpdf.p.rapidapi.com",
     },
     body: JSON.stringify({

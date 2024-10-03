@@ -36,7 +36,7 @@ const fetchInfo = async () => {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "096339dfcdmshf459ee8181b2b9fp18d767jsn61250751abc6",
+      "X-RapidAPI-Key": import.meta.env.VITE_YT_TO_MP3_API_KEY,
       "X-RapidAPI-Host": "youtube-mp3-download1.p.rapidapi.com",
     },
   };

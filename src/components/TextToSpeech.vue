@@ -104,7 +104,7 @@ const convertTextToSpeech = async () => {
   const headers = {
     Accept: "audio/mpeg",
     "Content-Type": "application/json",
-    "xi-api-key": "4b8dd56324399a451a423983f8b6a0b5",
+    "xi-api-key": import.meta.env.VITE_TEXT_TO_SPEECH_KEY,
   };
   const apiUrl = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId.value}`;
   try {

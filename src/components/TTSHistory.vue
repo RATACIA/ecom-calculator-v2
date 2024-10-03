@@ -134,7 +134,7 @@ const UnixToDate = (input) => {
 const fetchHistory = async () => {
   const options1 = {
     method: "GET",
-    headers: { "xi-api-key": "4b8dd56324399a451a423983f8b6a0b5" },
+    headers: { "xi-api-key": import.meta.env.VITE_TEXT_TO_SPEECH_KEY },
   };
 
   try {
@@ -160,7 +160,7 @@ const fetchHistory = async () => {
 const deleteItem = (historyItemId) => {
   const options = {
     method: "DELETE",
-    headers: { "xi-api-key": "4b8dd56324399a451a423983f8b6a0b5" },
+    headers: { "xi-api-key": import.meta.env.VITE_TEXT_TO_SPEECH_KEY },
   };
 
   fetch(`https://api.elevenlabs.io/v1/history/${historyItemId}`, options)
@@ -187,7 +187,7 @@ const downloadItem = (historyItemId) => {
   const options = {
     method: "POST",
     headers: {
-      "xi-api-key": "4b8dd56324399a451a423983f8b6a0b5",
+      "xi-api-key": import.meta.env.VITE_TEXT_TO_SPEECH_KEY,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ history_item_ids: [historyItemId] }),
@@ -216,7 +216,7 @@ const downloadItem = (historyItemId) => {
 const getAudioForItem = (historyItemId, index) => {
   const options = {
     method: "GET",
-    headers: { "xi-api-key": "4b8dd56324399a451a423983f8b6a0b5" },
+    headers: { "xi-api-key": import.meta.env.VITE_TEXT_TO_SPEECH_KEY },
   };
 
   fetch(`https://api.elevenlabs.io/v1/history/${historyItemId}/audio`, options)
