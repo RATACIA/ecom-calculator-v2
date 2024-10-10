@@ -95,7 +95,7 @@ const checkVoiceId = () => {
     voiceId.value = "531s3tRmcAgeowflt0ui";
   } else if (selectedVoice.value === "Vadim") {
     voiceId.value = "OLg73QGxWJupSLFWQ0iR";
-  } else if (selectedVoice.value === "Ana lu Ghita") {
+  } else if (selectedVoice.value === "Anna") {
     voiceId.value = "Q5NAvieUQEodAqiQwW7w";
   }
 };

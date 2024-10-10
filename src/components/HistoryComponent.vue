@@ -25,12 +25,12 @@
   </div>
 
   <div>
-    <h1 class="mb-4">Istoric Produse Adaugate</h1>
+    <h1 class="mb-4">Added product history</h1>
   </div>
   <div>
     <v-card color="grey-darken-4">
       <v-card-title class="d-flex align-center">
-        Cautare
+        Search
 
         <v-spacer></v-spacer>
 
@@ -95,20 +95,20 @@
         <v-divider vertical class="ma-3"></v-divider>
         <v-btn @click="$router.push('/history')" flat color="orange">
           <v-icon>mdi-history</v-icon>
-          <span class="ml-2">Vezi produse salvate</span>
+          <span class="ml-2">View product history</span>
         </v-btn>
       </v-card-title>
     </v-card>
 
     <v-dialog v-model="modalVisible" max-width="500px">
       <v-card>
-        <v-card-title class="headline text-center">Sterge produs</v-card-title>
+        <v-card-title class="headline text-center">Delete product</v-card-title>
         <v-card-text class="text-center">
-          Esti sigur(a) ca doresti sa stergi acest produs?
+          Are you sure you want to delete this item?
         </v-card-text>
         <v-card-actions class="d-flex justify-center">
-          <v-btn @click="deleteItem(currentItemId)">Sterge</v-btn>
-          <v-btn @click="toggleModal">Close</v-btn>
+          <v-btn @click="deleteItem(currentItemId)">Delete</v-btn>
+          <v-btn @click="toggleModal">Cancel</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

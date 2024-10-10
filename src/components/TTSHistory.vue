@@ -63,13 +63,13 @@
   </v-row>
   <v-dialog v-model="modalVisible" max-width="500px">
     <v-card>
-      <v-card-title class="headline text-center">Sterge produs</v-card-title>
+      <v-card-title class="headline text-center">Delete product</v-card-title>
       <v-card-text class="text-center">
-        Esti sigur(a) ca doresti sa stergi acest produs?
+        Are you sure you want to delete this item?
       </v-card-text>
       <v-card-actions class="text-center">
-        <v-btn @click="deleteItem(currentItemId)">Sterge</v-btn>
-        <v-btn @click="toggleModal">Close</v-btn>
+        <v-btn @click="deleteItem(currentItemId)">Delete</v-btn>
+        <v-btn @click="toggleModal">Cancel</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

@@ -1,41 +1,41 @@
 <template>
   <h1 class="mt-6"><v-icon>mdi-calculator</v-icon>Calculator e-commerce</h1>
   <h2 class="ma-3">
-    Cursul valutar din {{ getDate() }} <br />
+    Exchange rate on {{ getDate() }} <br />
     1 USD is {{ currencyUSD }} RON <br />
     1 EUR is {{ currencyEUR }} RON
   </h2>
 
   <div class="card" style="position: relative; min-height: 100vh">
     <v-card color="grey-darken-4">
-      <v-title>Adauga detalii produs</v-title>
+      <v-title>Add product details</v-title>
 
       <v-card color="grey-darken-3" class="mx-6 mt-6 mb-8 pb-0">
         <v-text-field
           class="mx-2 mt-6"
           variant="outlined"
-          label="adauga denumirea produs"
+          label="add product name"
           prepend-inner-icon="mdi-plus"
           v-model="productName"
         ></v-text-field>
         <v-text-field
           class="ma-2"
           variant="outlined"
-          label="adauga link produs"
+          label="add product link"
           v-model="productLink"
           prepend-inner-icon="mdi-link-variant"
         ></v-text-field>
         <v-text-field
           class="ma-2"
           variant="outlined"
-          label="adauga link pentru poza"
+          label="add photo link"
           prepend-inner-icon="mdi-camera"
           v-model="productImage"
         ></v-text-field>
         <v-text-field
           class="ma-2"
           variant="outlined"
-          label="Cost Produs"
+          label="Product cost"
           min="0"
           v-model="productCost"
           type="number"
@@ -43,7 +43,7 @@
         <v-text-field
           class="ma-2"
           variant="outlined"
-          label="Cost Transport"
+          label="Shipping cost"
           min="0"
           v-model="shippingCost"
           type="number"
@@ -51,14 +51,14 @@
         <v-text-field
           class="ma-2"
           variant="outlined"
-          label="numar de produse"
+          label="Number of products"
           v-model="numOfProducts"
           type="number"
         />
         <v-text-field
           class="ma-2"
           variant="outlined"
-          label="numarul de produse comandate lunar"
+          label="monthly number of ordered products"
           v-model="numOfMonthlyProducts"
           type="number"
         />
@@ -74,12 +74,12 @@
       <v-row>
         <v-col style="width: 500px">
           <v-chip variant="flat" size="large" color="orange" class="mb-6"
-            >Costuri produs</v-chip
+            >Product costs</v-chip
           >
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Cost Produs + Transport"
+            label="Product price + shipping"
             min="0"
             v-model="calculateShippingandProductCost"
             type="number"
@@ -87,7 +87,7 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Cost produs + comission Alibaba(6%)"
+            label="Product cost + Alibaba Comission"
             min="0"
             v-model="calculateAlibabaCommission"
             type="number"
@@ -95,7 +95,7 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Tva comanda (prod + transport + commission) + 19%"
+            label="VAT (product + shipping + commission) + 19%"
             min="0"
             v-model="calculateOrderValuePlusVAT"
             type="number"
@@ -103,7 +103,7 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Valoare Taxe vamale (1-9%) default 9%"
+            label="Customs fee(1-9%)"
             min="0"
             v-model="taxaVamala"
             type="number"
@@ -111,14 +111,14 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Valoare import dupa taxe vamale"
+            label="Import value after customs"
             v-model="calculateCustomsFee"
             type="number"
           />
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Taxa tranzit"
+            label="Tranzit tax"
             min="0"
             v-model="transitTax"
             type="number"
@@ -126,7 +126,7 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Comisionar vamal"
+            label="Customs broker"
             min="0"
             v-model="comisionarVamal"
             type="number"
@@ -134,7 +134,7 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Valoare reclame (TVA inclus)"
+            label="Ads price"
             min="0"
             v-model="calculateAdsPrice"
             type="number"
@@ -142,73 +142,73 @@
         </v-col>
         <v-col style="width: 500px">
           <v-chip variant="flat" size="large" color="orange" class="mb-6"
-            >Abonamente(cca. 2 cent/produs)</v-chip
+            >Subscriptions</v-chip
           >
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Abonament minea"
+            label="Minea sub"
             v-model="subscriptionMinea"
             type="number"
           />
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Abonament Paperform"
+            label="EasySell Sub"
             v-model="subscriptionPaperform"
             type="number"
           />
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Abonament Make"
+            label="Shopify Sub"
             v-model="subscriptionMake"
             type="number"
           />
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Abonament FGO  "
+            label="FGO Sub"
             v-model="subscriptionFgo"
             type="number"
           />
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Hosting si domeniu  "
+            label="Hosting and domain"
             v-model="hostAndDomain"
             type="number"
           />
         </v-col>
         <v-col style="width: 500px">
           <v-chip variant="flat" size="large" color="orange" class="mb-6"
-            >Costuri depozitare + shipping</v-chip
+            >Storage + local shipping costs</v-chip
           >
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="adauga inaltimea (H) in CM a produsului"
+            label="add height(H)"
             v-model="productHeight"
           >
           </v-text-field>
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="adauga lungimea (L) in CM a produsului"
+            label="add length(L)"
             v-model="productLength"
           >
           </v-text-field>
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="adauga latimea (W) in CM a produsului"
+            label="add Width(W)"
             v-model="productWidth"
           >
           </v-text-field>
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Cost depozitare (Euro per palet)"
+            label="Storage cost (Euro per pallet)"
             v-model="storageCost"
             min="10"
             max="15"
@@ -217,14 +217,14 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Cost impachetare"
+            label="Packing cost"
             v-model="packingCost"
             type="number"
           ></v-text-field>
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="Cost expediere"
+            label="Local shipping cost"
             v-model="shippingCourierCost"
             type="number"
           ></v-text-field>
@@ -236,7 +236,7 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="cost total per transport"
+            label="Total cost/shipping"
             v-model="totalComputed"
             type="number"
           >
@@ -244,7 +244,7 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="cost total per produs"
+            label="total cost per product"
             v-model="calculateMultipleProducts"
             type="number"
           >
@@ -254,7 +254,7 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="cost total abonamente(lunar)"
+            label="Monthly subscription cost"
             v-model="subscriptionMonthlyCost"
             type="number"
           >
@@ -262,7 +262,7 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="cost total per produs cu abonament"
+            label="Total cost per product including subscriptions"
             v-model="costWithMonthlyAds"
           >
           </v-text-field>
@@ -271,7 +271,7 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="cost depozitare total"
+            label="total storage cost"
             v-model="calculateStorageCostTotal"
             type="number"
           >
@@ -279,7 +279,7 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="cost depozitare per produs"
+            label="storage cost per product"
             v-model="calculateStorageCostPerProduct"
             type="number"
           >
@@ -287,7 +287,7 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="cost depozitare plus impachetare"
+            label="storage + packing cost"
             v-model="calculateStorageCostPlusPacking"
             type="number"
           >
@@ -295,7 +295,7 @@
           <v-text-field
             class="ma-4"
             variant="outlined"
-            label="cost depozitare + impachetare + cost curierat"
+            label="storage cost + packing + local courier"
             v-model="calculateStoragePackingandShipping"
             type="number"
           >
@@ -307,7 +307,7 @@
           <v-row>
             <v-col>
               <v-chip variant="flat" size="large" color="orange" class="mb-6"
-                >Pret final produs</v-chip
+                >Product final price</v-chip
               >
             </v-col>
             <v-divider color="orange" class="border-opacity-100"></v-divider>
@@ -315,14 +315,14 @@
               <v-text-field
                 class="ma-4"
                 variant="outlined"
-                label="cost total"
+                label="total cost"
                 v-model="calculateTotalCost"
               ></v-text-field>
 
               <v-text-field
                 class="ma-4"
                 variant="outlined"
-                label="pret cu adaos"
+                label="price with profict"
                 v-model="calculateWithAddedROI"
               ></v-text-field>
             </v-col>
@@ -330,7 +330,7 @@
         </v-col>
       </v-row>
       <v-btn color="orange" class="ma-4" @click="saveFormData"
-        >Adauga produs <v-icon>mdi-plus</v-icon></v-btn
+        >Add product <v-icon>mdi-plus</v-icon></v-btn
       >
       <v-divider color="orange" class="border-opacity-100"></v-divider>
     </v-card>
@@ -352,7 +352,7 @@
           class="mb-2"
         >
           <v-icon>mdi-history</v-icon>
-          <span class="ml-2">Vezi produse salvate</span>
+          <span class="ml-2">View product history</span>
         </v-btn>
       </v-card-title>
     </v-card>
